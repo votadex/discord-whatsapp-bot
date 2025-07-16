@@ -1,22 +1,15 @@
-﻿import discord
+import discord
 import asyncio
-import secrets
 from twilio.rest import Client
 from threading import Thread
 import webhook_server  # import the Flask app
-import os
-
-DISCORD_BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
-TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
-TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
-TWILIO_FROM = os.getenv("TWILIO_FROM")
-TWILIO_TO = os.getenv("TWILIO_TO")
+import secrets  # <-- this imports your tokens and numbers
 
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
 
-# Twilio client setup
+# Twilio client setup using secrets
 twilio_client = Client(secrets.TWILIO_ACCOUNT_SID, secrets.TWILIO_AUTH_TOKEN)
 
 # Start Flask server in background
