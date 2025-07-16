@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: discord-whatsapp-bot
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn webhook_server:app --bind 0.0.0.0:10000
+    envVars:
+      - key: DISCORD_BOT_TOKEN
+        value: YOUR_DISCORD_TOKEN
+      - key: TWILIO_ACCOUNT_SID
+        value: YOUR_TWILIO_SID
+      - key: TWILIO_AUTH_TOKEN
+        value: YOUR_TWILIO_TOKEN
+      - key: TWILIO_FROM
+        value: whatsapp:+14155238886
+      - key: TWILIO_TO
+        value: whatsapp:+1YOURNUMBER
